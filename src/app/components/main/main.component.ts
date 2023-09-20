@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
+import { Route } from '@angular/router';
 import { ItemsData } from 'src/app/data/items.data';
 import { Item } from 'src/app/models/Items.model';
 import { SelectedItem } from 'src/app/models/SelectedItem.model';
+import { QRService } from 'src/app/services/qr.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -9,6 +12,9 @@ import { SelectedItem } from 'src/app/models/SelectedItem.model';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent {
+
+  constructor(private qrService: QRService, private router: Router) { }
+
   items: Item[] = ItemsData;
   total: number = 0;
   selectedItems: SelectedItem[] = [];
@@ -50,5 +56,18 @@ export class MainComponent {
   deleteClickHandler(index: number) {
     this.total -= this.selectedItems[index].item.price * this.selectedItems[index].quantity;
     this.selectedItems.splice(index, 1);
+  }
+
+  sendOrderToQRService() {
+    this.qrService.setOrder({
+      id: 'XYZ',
+      selectedItems: this.selectedItems,
+      total: this.total
+    });
+  }
+
+  goToQRComponent() {
+    this.sendOrderToQRService();
+    this.router.navigate([('/QR_Payment')]);
   }
 }
