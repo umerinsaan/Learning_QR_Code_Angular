@@ -1,4 +1,5 @@
 export interface Item {
     name: string,
-    price: number
+    price: number,
+    isSelected: boolean
 }

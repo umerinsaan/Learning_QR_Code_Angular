@@ -1,11 +1,24 @@
 <div class="main-container">
     <div class="left-right-container">
         <div class="left-container">
-            HELLO
+            <div class="selected-items-container">
+                <div class="selected-item" *ngFor="let selectedItem of selectedItems; let i = index">
+                    <div class="selected-item-name">{{selectedItem.item.name}}</div>
+                    <div class="selected-item-price">Rs. {{selectedItem.item.price}}</div>
+                    <div class="selected-item-btns-container">
+                        <div class="plus-minus-container">
+                            <button class="plus-btn" (click)="plusClickHandler(i)">+</button>
+                            <div class="selected-item-quantity">{{selectedItem.quantity}}</div>
+                            <button class="minus-btn" (click)="minusClickHandler(i)">-</button>
+                        </div>
+                        <button class="delete-btn" (click)="deleteClickHandler(i)">X</button>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="right-container">
             <div class="food-menu">
-                <div class="food-item" *ngFor="let item of items;">
+                <div class="food-item" *ngFor="let item of items; let i = index" (click)="addItem(i)">
                     <div class="food-name">{{item.name}}</div>
                     <div class="food-price">Rs. {{item.price}}</div>
                 </div>
@@ -13,6 +26,7 @@
         </div>
     </div>
     <div class="bottom-container">
-        <button id="generate-bill-btn">Generate Bill</button>
+        <button class="print-receipt-btn">Print Receipt</button>
+        <div class="total-bill-value">Rs. {{total}}</div>
     </div>
 </div>
