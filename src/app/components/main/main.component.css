@@ -1,0 +1,49 @@
+.main-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.left-right-container {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    /* border: 2px solid lime; */
+    width: 100%;
+}
+
+.left-container,
+.right-container {
+    height: 80vh;
+    border: 1px solid red;
+}
+
+.left-container {
+    overflow: auto;
+    width: 70%;
+}
+
+.right-container {
+    width: 30%;
+}
+
+.food-menu {
+    padding: 1rem;
+    overflow: auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.food-item {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid lime;
+    font-size: 1.5rem;
+    padding: 1rem;
+}

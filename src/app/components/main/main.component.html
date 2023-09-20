@@ -1,0 +1,18 @@
+<div class="main-container">
+    <div class="left-right-container">
+        <div class="left-container">
+            HELLO
+        </div>
+        <div class="right-container">
+            <div class="food-menu">
+                <div class="food-item" *ngFor="let item of items;">
+                    <div class="food-name">{{item.name}}</div>
+                    <div class="food-price">Rs. {{item.price}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bottom-container">
+        <button id="generate-bill-btn">Generate Bill</button>
+    </div>
+</div>
